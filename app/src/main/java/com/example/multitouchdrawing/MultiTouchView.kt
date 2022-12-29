@@ -41,6 +41,7 @@ class MultiTouchView(context: Context, attrs: AttributeSet? = null) :
         return when(action) {
             MotionEvent.ACTION_DOWN,
             MotionEvent.ACTION_POINTER_DOWN -> {
+
                 currentCircle = Circle(point, circleRadius)
                 mCircles[pointerId] = currentCircle
                 Log.d("MultLog", "Draw circle, index $pointerIndex, id $pointerId, x = ${point.x}, y = ${point.y}")
@@ -57,6 +58,7 @@ class MultiTouchView(context: Context, attrs: AttributeSet? = null) :
             }
             MotionEvent.ACTION_POINTER_UP -> {
                 mCircles.remove(pointerId)
+                Log.d("MultLog", "Removed, id $pointerId, x = ${point.x}, y = ${point.y}")
                 true
             }
             MotionEvent.ACTION_UP,
